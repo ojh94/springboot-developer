@@ -1,7 +1,7 @@
 package com.itschool.springbootdeveloper.service;
 
 import com.itschool.springbootdeveloper.domain.User;
-import com.itschool.springbootdeveloper.dto.AddUserRequest;
+import com.itschool.springbootdeveloper.network.request.AddUserRequest;
 import com.itschool.springbootdeveloper.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

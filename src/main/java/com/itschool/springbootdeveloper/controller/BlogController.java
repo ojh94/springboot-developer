@@ -2,7 +2,7 @@ package com.itschool.springbootdeveloper.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itschool.springbootdeveloper.domain.Article;
-import com.itschool.springbootdeveloper.dto.AddArticleRequest;
+import com.itschool.springbootdeveloper.network.request.ArticleRequest;
 import com.itschool.springbootdeveloper.service.BlogService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class BlogController {
 
     @PostMapping("")
     public ModelAndView addArticle(HttpServletRequest request) throws IOException {
-        AddArticleRequest addArticleRequest = objectMapper.readValue(request.getInputStream(), AddArticleRequest.class);
+        ArticleRequest addArticleRequest = objectMapper.readValue(request.getInputStream(), ArticleRequest.class);
 
         // 서비스 호출을 통해 Article 생성
         Article savedArticle = blogService.create(addArticleRequest);

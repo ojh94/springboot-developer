@@ -20,3 +20,31 @@ spring:
     
     # 테이블 생성 후에 data.sql 실행
     defer-datasource-initialization: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+
+    group-order: DESC
+
+    tags-sorter: alpha
+
+    operations-sorter: method
+
+    disable-swagger-default-url: true
+
+    display-request-duration: true
+
+    doc-expansion: none
+
+  api-docs:
+    path: /api-docs
+
+  show-actuator: true
+
+  default-consumes-media-type: application/json
+
+  default-produces-media-type: application/json
+
+  paths-to-match:
+    - /api/**

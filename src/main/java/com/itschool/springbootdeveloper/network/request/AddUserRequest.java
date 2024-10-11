@@ -1,4 +1,4 @@
-package com.itschool.springbootdeveloper.dto;
+package com.itschool.springbootdeveloper.network.request;
 
 import lombok.Getter;
 import lombok.Setter;

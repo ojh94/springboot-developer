@@ -1,0 +1,24 @@
+package com.itschool.springbootdeveloper.service.base;
+
+import com.itschool.springbootdeveloper.ifs.CrudInterface;
+import com.itschool.springbootdeveloper.network.Header;
+import com.itschool.springbootdeveloper.repository.BlogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
+
+import java.awt.print.Pageable;
+import java.util.List;
+
+@Component
+public abstract class BaseService<Req, Res, Entity> implements CrudInterface<Req, Res> {
+
+    @Autowired(required = false)
+    protected JpaRepository<Entity, Long> baseRepository;
+
+    public abstract Header<List<Res>> search(Pageable pageable);
+
+    abstract protected Res response(Entity entity);
+
+}

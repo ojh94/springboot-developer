@@ -1,6 +1,6 @@
 package com.itschool.springbootdeveloper.controller;
 
-import com.itschool.springbootdeveloper.dto.AddUserRequest;
+import com.itschool.springbootdeveloper.network.request.AddUserRequest;
 import com.itschool.springbootdeveloper.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -10,7 +10,6 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @Controller

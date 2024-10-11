@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity // 엔티티로 지정
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@AllArgsConstructor
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 public class Article {
@@ -32,12 +34,6 @@ public class Article {
     @LastModifiedDate
     @Column(name="updated_at") // 엔티티가 수정될 때 수정 시간 저장
     private LocalDateTime updatedAt;
-    
-    @Builder // 빌더 패턴으로 객체 생성
-    public Article(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 
     public void update(String title, String content) {
         this.title = title;

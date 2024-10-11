@@ -1,8 +1,8 @@
 package com.itschool.springbootdeveloper.controller;
 
 import com.itschool.springbootdeveloper.domain.Article;
-import com.itschool.springbootdeveloper.dto.ArticleListViewResponse;
-import com.itschool.springbootdeveloper.dto.ArticleViewResponse;
+import com.itschool.springbootdeveloper.network.response.ArticleListViewResponse;
+import com.itschool.springbootdeveloper.network.response.ArticleViewResponse;
 import com.itschool.springbootdeveloper.service.BlogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

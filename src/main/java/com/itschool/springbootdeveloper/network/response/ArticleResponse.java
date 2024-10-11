@@ -1,15 +1,15 @@
-package com.itschool.springbootdeveloper.dto;
+package com.itschool.springbootdeveloper.network.response;
 
 import com.itschool.springbootdeveloper.domain.Article;
 import lombok.Getter;
 
 @Getter
-public class ArticleListViewResponse {
+public class ArticleResponse {
     private final Long id;
     private final String title;
     private final String content;
 
-    public ArticleListViewResponse(Article article) {
+    public ArticleResponse(Article article) {
         this.id = article.getId();
         this.title = article.getTitle();
         this.content = article.getContent();

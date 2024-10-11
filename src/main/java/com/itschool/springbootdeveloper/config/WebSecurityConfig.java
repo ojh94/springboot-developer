@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
@@ -41,7 +42,13 @@ public class WebSecurityConfig {
                         .requestMatchers(
                                 new AntPathRequestMatcher("/login"),
                                 new AntPathRequestMatcher("/signup"),
-                                new AntPathRequestMatcher("/user")
+                                new AntPathRequestMatcher("/user"),
+                                new AntPathRequestMatcher("/api/**"),
+                                new AntPathRequestMatcher("/api-docs"),
+                                new AntPathRequestMatcher("/api-docs/**"),
+                                new AntPathRequestMatcher("/v3/api-docs/**"),
+                                new AntPathRequestMatcher("/swagger*/**"),
+                                new AntPathRequestMatcher("/swagger-resources/**")
                         ).permitAll()
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin // 폼 기반 로그인 설정
@@ -49,10 +56,21 @@ public class WebSecurityConfig {
                         .defaultSuccessUrl("/articles")
                 )
                 .logout(logout -> logout // 로그아웃 설정
+                        .logoutUrl("/logout")
                         .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+
                 )
-                .csrf(AbstractHttpConfigurer::disable) // csrf 비활성화
+                .csrf((csrf) -> csrf.ignoringRequestMatchers(
+                        new AntPathRequestMatcher("api/**"),
+                        new AntPathRequestMatcher("/api-docs"),
+                        new AntPathRequestMatcher("/api-docs/**"),
+                        new AntPathRequestMatcher("/v3/api-docs/**")
+                ).disable())
+                .headers((headers) -> headers.addHeaderWriter(
+                        new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)
+                ))
                 .build();
     }
 

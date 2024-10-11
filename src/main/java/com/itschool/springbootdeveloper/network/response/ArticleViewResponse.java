@@ -1,4 +1,4 @@
-package com.itschool.springbootdeveloper.dto;
+package com.itschool.springbootdeveloper.network.response;
 
 import com.itschool.springbootdeveloper.domain.Article;
 import lombok.Getter;
